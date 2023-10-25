@@ -2,6 +2,16 @@
 let untyped ='';
 let typed ='';
 let score = 0;
+
+
+
+document.addEventListener('keypress', e => {
+  console.log(e.key);
+  if(e.key === word[load] ) {
+  
+    
+  }
+})
 // タイピングスキルのランクを判定
 const rankCheck = score => {
 
@@ -39,6 +49,8 @@ const typedfield = document.getElementById('typed');
 const wrap = document.getElementById('wrap');
 const start = document.getElementById('start');
 const count = document.getElementById('count');
+
+
 
  // 複数のテキストを格納する配列
 const textLists = [
@@ -90,9 +102,11 @@ if(e.key !== untyped.substring(0,1)) {
     untyped = untyped.substring(1);
     typedfield.textContent = typed;
     untypedfield.textContent =untyped;
+    countingwords.textContent = score
+    
 
  // テキストがなくなったら新しいテキストを表示
- if(untyped === '') {
+ if(untyped === '') { 
     createText();
  }
 };
@@ -117,6 +131,7 @@ const timer = () => {
 start.addEventListener('click',  () => {
   // カウントダウンタイマーを開始する
   timer();
+  
 
 
 
@@ -126,8 +141,10 @@ start.addEventListener('click',  () => {
    // 「スタート」ボタンを非表示にする
    start.style.display = 'none';
 
+
    // キーボードのイベント処理
    document.addEventListener('keypress',keyPress);
 });
 untypedfield.textContent = 'スタートボタンで開始';
+
 
