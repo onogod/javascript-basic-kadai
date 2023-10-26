@@ -35,13 +35,16 @@ return `${score}文字打てました。\n${text}\n【OK】リトライ /【キ�
 
 // ゲームを終了
 const gameOver = id => {
-  clearInterval(id);
- const result = confirm(rankCheck(score));
- // OKボタンをクリックされたらリロードする
- if(result == true) {
-  window.location.reload();
- }
-};
+  clearInterval(id); 
+  wrap.textContent = 'タイムアップ！';
+  setTimeout(() => {
+    const result = confirm(rankCheck(score));
+    },40);
+    if(result == true) {
+      window.location.reload();
+    }
+}
+
 
 // 必要なHTML要素の取得
 const untypedfield = document.getElementById('untyped');
@@ -122,10 +125,12 @@ const timer = () => {
      count.textContent = time;
      // カウントが0になったらタイマーを停止する
      if(time <= 0) {
+    
       gameOver(id);
      }
   },1000);
 };
+
 
 // ゲームスタート時の処理
 start.addEventListener('click',  () => {
